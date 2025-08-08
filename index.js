@@ -1,4 +1,5 @@
 import process from 'node:process';
+import { register } from 'node:module';
 import cachedTransform, {cacheKeyFromSource} from './cache.js';
 import transform from './transform.js';
 
@@ -41,3 +42,5 @@ export const load = async (url, _context, nextLoad) => {
 		return nextLoad(url);
 	}
 };
+
+register('import-jsx', import.meta.url);

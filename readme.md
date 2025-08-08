@@ -1,6 +1,6 @@
 # import-jsx ![Build Status](https://github.com/vadimdemedes/import-jsx/workflows/test/badge.svg)
 
-> Import and transpile JSX via [loader hooks](https://nodejs.org/dist/latest-v18.x/docs/api/esm.html#loaders). It doesn't transpile anything besides JSX and caches transpiled sources by default.
+> Import and transpile JSX via [import hooks](https://nodejs.org/api/cli.html#--importmodule). It doesn't transpile anything besides JSX and caches transpiled sources by default.
 
 ## Install
 
@@ -14,7 +14,7 @@ npm install import-jsx
 > `import-jsx` only works with ES modules.
 
 ```sh
-node --loader=import-jsx react-example.js
+node --import=import-jsx react-example.js
 ```
 
 **react-example.js**
@@ -61,5 +61,5 @@ const HelloWorld = () => <h1>Hello world</h1>;
 If that's not a desired behavior, turn off caching by setting `IMPORT_JSX_CACHE=0` or `IMPORT_JSX_CACHE=false` environment variable.
 
 ```console
-IMPORT_JSX_CACHE=0 node --loader=import-jsx my-code.js
+IMPORT_JSX_CACHE=0 node --import=import-jsx my-code.js
 ```
