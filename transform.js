@@ -1,28 +1,23 @@
 // Only load these if compiled source is not already cached
 let babel;
-let reactPreset;
+let transformJsx;
 
 const transform = async (source, filename) => {
 	if (!babel) {
 		babel = await import('@babel/core');
-		reactPreset = await import('@babel/preset-react');
+		transformJsx = await import('@babel/plugin-transform-react-jsx');
 	}
 
-	const presets = [
-		[
-			reactPreset.default,
-			{
-				importSource: 'preact',
-				runtime: 'automatic',
-				pure: false,
-				useBuiltIns: true,
-				useSpread: true
-			}
-		]
-	];
-
 	const result = await babel.transformAsync(source, {
-		presets,
+		plugins: [
+	    [
+	      transformJsx.default,
+	      {
+	        pragma: process.env.PRAGMA || 'h',
+	        pragmaFrag: process.env.PRAGMA_FRAG || 'Fragment',
+	      }
+	    ]
+	  ],
 		filename,
 		sourceMaps: 'inline',
 		babelrc: false,
