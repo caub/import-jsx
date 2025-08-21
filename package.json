@@ -10,7 +10,10 @@
     "url": "github.com/vadimdemedes"
   },
   "type": "module",
-  "exports": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./transform": "./transform.js"
+  },
   "engines": {
     "node": ">=14.16"
   },
