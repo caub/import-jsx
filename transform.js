@@ -12,6 +12,7 @@ const transform = async (source, filename) => {
 		[
 			reactPreset.default,
 			{
+				importSource: 'preact',
 				runtime: 'automatic',
 				pure: false,
 				useBuiltIns: true,
